@@ -1,0 +1,63 @@
+ion-content
+{
+  --ion-background-color: #59C5CD;
+}
+.top
+{
+  background-color: #FF9701;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+  border-radius: 0px 0px 371px 376px / 0px 0px 125px 125px;
+  color: #ffff;
+}
+.botom
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.texte-question p
+{
+  color: #ffff;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  margin-top: -5px;
+}
+.niveau
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 250px;
+    height: 40px;
+    margin: 0 auto;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+.niveau img
+{
+    width: 30px;
+    height: 30px;
+}
+.niveau .valide
+{
+    width: 40px;
+    height: 40px;
+    color: #c4edc4;
+}
+.btn-envoyer-avis
+{
+    width: 90px;
+    color: #fff;
+    background-color: #373737;
+    border-radius: 5px;
+    padding: 10px;
+}

@@ -1,0 +1,51 @@
+.body
+{
+  --ion-background-color: #59C5CD;
+}
+.top
+{
+  background-color: #FF9701;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px;
+  border-radius: 0px 0px 371px 376px / 0px 0px 125px 125px;
+  color: #ffff;
+}
+form
+{
+  margin: 0 auto;
+  padding: 15px;
+}
+.label{
+  color: #ffff;
+  margin-top: 21px;
+  margin-left: 10px;
+}
+.input{
+  padding: 10px;
+  border-radius: 7px;
+  border: 1px solid #ffff;
+  background-color: #c1e0be;
+  opacity: 0.7;
+  margin: 0 auto;
+}
+
+.connexion
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.connexion .p 
+{
+  color: #ffff;
+  font-size: 8px;
+}
+.connexion .btn-login
+{
+  width: 80px;
+  border-radius: 5px;
+}

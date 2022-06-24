@@ -1,0 +1,30 @@
+ion-content
+{
+  --ion-background-color: #59C5CD;
+}
+.top
+{
+  background-color: #FF9701;
+  padding: 70px;
+  border-radius: 0px 0px 371px 376px / 0px 0px 125px 125px;
+  color: #ffff;
+}
+.botom
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 45px;
+    color: #ffff;
+}
+.top img
+{
+  margin-top: 65px;
+}
+.img-succuess img
+{
+  width: 30px;
+  height: 30px;
+}

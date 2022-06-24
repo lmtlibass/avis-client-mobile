@@ -1,0 +1,38 @@
+<!-- <ion-content  class="body">
+  <form (ngSubmit)="login()" [formGroup]="userform">
+    <div class="input-group">
+      <ion-item>
+        <ion-input placeholder="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+    </div>
+ 
+    <ion-button type="submit" expand="block" [disabled]="!userform.valid">Log in</ion-button>
+  </form>
+</ion-content> -->
+<ion-content class="body">
+  <div class="container">
+    <div class="top">
+      <img src="../../assets/img/logo_afridev.png" alt="">
+      <h1>connexion</h1>
+    </div>
+    <div class="botom">
+      <form (ngSubmit)="login()" [formGroup]="userform">
+        <ion-item>
+          <ion-label class="label" position="floating">Email</ion-label>
+          <ion-input class="input" placeholder="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item >
+          <ion-label class="label" position="floating">Password</ion-label>
+          <ion-input type="password" class="input" placeholder="Password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-item class="connexion" lines="none">
+          <ion-button color="dark" class="btn-login" type="submit" expand="block" [disabled]="!userform.valid">Connexion</ion-button>
+          <ion-button color="none" lines="none" class="p">Mot de passe oublié?</ion-button>
+        </ion-item>
+      </form>
+    </div>
+  </div>
+</ion-content>

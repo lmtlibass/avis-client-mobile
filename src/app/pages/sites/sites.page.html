@@ -1,0 +1,33 @@
+<ion-content>
+  <div class="container">
+    <div class="top">
+      <img src="../../assets/img/logo_afridev.png" alt="">
+      <h1>Sites</h1>
+    </div>
+    <div class="botom">
+      
+
+      <ion-list>
+        <ion-item>
+          <ion-select
+            placeholder="Select Sous Site"
+            (ionChange)="handleChange($event)"
+          >
+            <ion-select-option *ngFor="let soussites of sousite" [value]="soussites">{{ soussites.sous_domaine }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- <ion-item lines="none">
+          <ion-label>Current value: {{ currentValue | json }}</ion-label>
+        </ion-item> -->
+      </ion-list>
+
+
+       
+        <div class="connexion">
+          <button class="btn-choix" [routerLink]="['/note']" >
+            Choisir
+          </button>
+        </div>
+    </div>
+  </div>
+</ion-content>

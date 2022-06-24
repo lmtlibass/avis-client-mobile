@@ -1,0 +1,7 @@
+{
+  "name": "frontend_appsatisfaction",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
