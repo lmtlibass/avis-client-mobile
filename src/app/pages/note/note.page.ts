@@ -25,7 +25,7 @@ export class NotePage implements OnInit {
   satisfaction: Note = {
     note: 0,
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    sou_site_id: 1,
+    sou_site_id: null,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     site_id: 1,
   };
@@ -52,9 +52,9 @@ export class NotePage implements OnInit {
         break;
     }
   }
-  this.presentLoadingWithOptions();
+  this.presentLoadingWithOptions();//appelle de spinner function
   this.satisfaction.sou_site_id = await this.storageService.get('sousite_id');
-  // this.satisfaction.site_id     = await this.storageService.get('site_id');
+  this.satisfaction.site_id     =  await this.storageService.get('user.site_id');
   this.addnote();
   this.sendNote();
   }

@@ -37,8 +37,8 @@ export class ApiService {
     return this.http.post(`${this.url}/login`, credentials).pipe(
       switchMap((tokens) => {
         this.currentAccesToken = tokens;
-        // this.storageService.set('user_id', this.currentAccesToken.user.id);
-        // console.log(this.currentAccesToken.user.id);
+        // console.log(this.currentAccesToken.user);
+        this.storageService.set('user.site_id', this.currentAccesToken.user.site_id);
         return from(Promise.all([tokens]));
       }),
       tap(() => {
@@ -47,6 +47,10 @@ export class ApiService {
     );
   }
 
+  // storeId(){
+  //   console.log(this.currentAccesToken.user);
+  //   this.storageService.set('user', this.currentAccesToken.user);
+  // }
 
 
 }
