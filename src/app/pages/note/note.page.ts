@@ -79,17 +79,14 @@ export class NotePage implements OnInit {
 
   async presentLoadingWithOptions() {
     const loading = await this.loadingCtrl.create({
-      spinner: 'dots',
-      duration: 5000,
-      message: 'Merci de donner votre avis',
+      spinner: 'circles',
+      duration: 3000,
+      // message: 'Merci de donner votre avis',
       translucent: true,
-      cssClass: 'custom-class custom-loading-circle',
+      cssClass: 'custom-class custom-loading-circle gg',
       backdropDismiss: true
     });
     await loading.present();
-
-    const { role } = await loading.onDidDismiss();
-    console.log('Loading dismissed with role:', role);
   }
 
 }

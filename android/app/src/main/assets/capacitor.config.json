@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "frontend_appsatisfaction",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

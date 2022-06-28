@@ -25,6 +25,7 @@ export class SitesPage implements OnInit {
   arraye= [];
   // eslint-disable-next-line @typescript-eslint/naming-convention
   user: any;
+  loadingCtrl: any;
 
   constructor(
     private router: Router,
@@ -36,13 +37,8 @@ export class SitesPage implements OnInit {
       this.getSouSite();
       this.sousiteBySite =  await this.storageService.get('sousite');
       console.log(this.sousiteBySite);
-      // eslint-disable-next-line no-underscore-dangle
+      this.redirect();
   }
-
-  // async getuserId(){
-  //    this.user = await this.storageService.get('user.site_id');
-  //    console.log(this.user);
-  // }
 
   async getData() {
     this.secretData = null;
@@ -57,17 +53,22 @@ export class SitesPage implements OnInit {
       map( res => res )
     )
     .subscribe( async (res: any[]) => {
+      {
         for (const sousites of res){
           if(await this.storageService.get('user.site_id') === sousites.site_id){
             this.arraye.push(sousites);
             // console.log(this.arraye);
             this.storageService.set('sousite', this.arraye);
-          }else{
-            this.router.navigateByUrl('/note', { replaceUrl: true });
           }
         }
-
+      }
     });
+  }
+
+  async redirect(){
+    if(!await this.storageService.get('sousite')){
+      this.router.navigateByUrl('/note', { replaceUrl: true });
+    }
   }
 
   handleChange(ev) {
@@ -75,7 +76,5 @@ export class SitesPage implements OnInit {
     console.log(this.currentValue.id);
     this.storageService.set('sousite_id', this.currentValue.id);
   }
-
-
 
 }
