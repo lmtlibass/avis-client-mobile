@@ -9,9 +9,11 @@ export class StorageService {
   forEach(arg0: (element: any) => void) {
     throw new Error('Method not implemented.');
   }
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   private _storage: Storage | null = null;
 
-  constructor(private storage: Storage) {
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  constructor(private storage: Storage){
     this.init();
   }
 

@@ -10,8 +10,6 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-sites',
   templateUrl: './sites.page.html',
@@ -20,55 +18,19 @@ import { pipe } from 'rxjs';
 export class SitesPage implements OnInit {
   secretData = null;
   sousite: any;
-  sousiteBySite: any;
+  sousiteBySite: any [];
   currentValue = undefined;
-  arraye= [];
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   user: any;
   loadingCtrl: any;
 
   constructor(
-    private router: Router,
     private storageService: StorageService,
-    private apiService: ApiService,
-    private dataservice: DataService,) { }
+    ){}
 
   async ngOnInit() {
-      this.getSouSite();
-      this.sousiteBySite =  await this.storageService.get('sousite');
+      this.sousite = await this.storageService.get('currentsite');
+      this.sousiteBySite = this.sousite;
       console.log(this.sousiteBySite);
-      this.redirect();
-  }
-
-  async getData() {
-    this.secretData = null;
-
-    this.apiService.getSecretData().subscribe((res: any) => {
-      this.secretData = res.msg;
-    });
-  }
-
-  getSouSite(){
-    return this.dataservice.getSouSite().pipe(
-      map( res => res )
-    )
-    .subscribe( async (res: any[]) => {
-      {
-        for (const sousites of res){
-          if(await this.storageService.get('user.site_id') === sousites.site_id){
-            this.arraye.push(sousites);
-            // console.log(this.arraye);
-            this.storageService.set('sousite', this.arraye);
-          }
-        }
-      }
-    });
-  }
-
-  async redirect(){
-    if(!await this.storageService.get('sousite')){
-      this.router.navigateByUrl('/note', { replaceUrl: true });
-    }
   }
 
   handleChange(ev) {
