@@ -24,3 +24,12 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.toast-custom-class {
+    --color:#010101;
+    --box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    --height: 250px;
+    --width: 70%;  
+    --button-color:#046802;
+    --button-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }

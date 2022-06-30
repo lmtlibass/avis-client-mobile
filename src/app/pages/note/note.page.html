@@ -25,4 +25,15 @@
         </button>
     </div>
   </div>
+    <button [ngClass]="active" (click)=" popupDesible()">
+      <div class="row  icon" >
+        <ion-icon class="ok" name="chevron-down-outline"></ion-icon>
+      </div>
+      <div class="row title">
+        <h3>Envoyé</h3>
+      </div>
+      <div class="row">
+        <p>Merci pour votre retour</p>
+      </div>
+    </button>
 </ion-content>

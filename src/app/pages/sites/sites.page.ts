@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
-// import { pipe } from 'rxjs';
-// import { ObserveOnOperator } from 'rxjs/internal/operators/observeOn';
-// import { filter } from 'rxjs/operators';
-import { ApiService } from 'src/app/services/api.service';
-import { DataService } from 'src/app/services/data.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { pipe } from 'rxjs';
+
 
 @Component({
   selector: 'app-sites',

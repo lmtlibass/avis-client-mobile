@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/model/note';
 import { DataService } from 'src/app/services/data.service';
-import { LoadingController, AlertController  } from '@ionic/angular';
+import { LoadingController, AlertController, NavController  } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-note',
@@ -14,11 +15,17 @@ export class NotePage implements OnInit {
   color1: string;
   color2: string;
   color3: string;
+  value = 'red';
+  // active= 'visible-popup';
+  active = 'desible-popup';
 
 
-  constructor( private storageService: StorageService,
+  constructor(
+              private navCtrl: NavController,
+              private toastContreoller: ToastController,
+              private storageService: StorageService,
               private dataservice: DataService,
-              private loadingCtrl: LoadingController,
+              // private loadingCtrl: LoadingController,
               private router: Router,
               ) { }
   // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -52,11 +59,12 @@ export class NotePage implements OnInit {
         break;
     }
   }
-  this.presentLoadingWithOptions();//appelle de spinner function
+  // this.presentLoadingWithOptions();//appelle de spinner function
   this.satisfaction.sou_site_id = await this.storageService.get('sousite_id');
   this.satisfaction.site_id     =  await this.storageService.get('user.site_id');
   this.addnote();
-  this.sendNote();
+  this.popupSuccess();
+  // this.displayToast();
   }
 
   addnote(){
@@ -65,29 +73,66 @@ export class NotePage implements OnInit {
     });
   }
 
-  //function pour rrenvoyer vers la page success
-  async sendNote(){
-    const loading = await this.loadingCtrl.create({});
-    await loading.dismiss();
-    this.router.navigateByUrl('/success', { replaceUrl: true });
-  }
-
-  //recuperation de la valeur actuelle
-  // getId(){
-  //   return this.apiService.getSiteselcted();
+  // //function pour rrenvoyer vers la page success
+  // async sendNote(){
+  //   const loading = await this.loadingCtrl.create({});
+  //   await loading.dismiss();
   // }
 
-  async presentLoadingWithOptions() {
-    const loading = await this.loadingCtrl.create({
-      spinner: 'circles',
-      duration: 3000,
-      // message: 'Merci de donner votre avis',
-      translucent: true,
-      cssClass: 'custom-class custom-loading-circle gg',
-      backdropDismiss: true
-    });
-    await loading.present();
+
+
+  // async presentLoadingWithOptions() {
+  //   const loading = await this.loadingCtrl.create({
+  //     spinner: 'circles',
+  //     duration: 1000,
+  //     // message: 'Merci de donner votre avis',
+  //     translucent: true,
+  //     cssClass: 'custom-class custom-loading-circle gg',
+  //     backdropDismiss: true
+  //   });
+  //   await loading.present();
+  // }
+
+
+
+  // displayToast() {
+  //   // Stop multiple toasts
+  //   try {
+  //     this.toastContreoller.dismiss().then(() => {
+  //     }).catch(() => {
+  //     }).finally(() => {
+  //     });
+  //   } catch(e) {}
+  //    this.toastContreoller.create({
+  //     header: 'envoyé',
+  //     message: 'merci de votre retour',
+  //     position: 'middle',
+  //     cssClass: 'toast-custom-class',
+  //     buttons: [
+  //       {
+  //         side: 'end',
+  //         icon: 'checkmark',
+  //         handler: () => {
+  //           console.log('');
+  //         }
+  //       },
+  //     ]
+  //   }).then((toast) => {
+  //     toast.present();
+  //   });
+  // }
+  popupSuccess(){
+    if(true){
+      this.active = 'visible-popup';
+    }
   }
+  popupDesible(){
+    this.color1 = '';
+    this.color2 = '';
+    this.color3 = '';
+    return this.active = 'desible-popup';
+  }
+
 
 }
 
