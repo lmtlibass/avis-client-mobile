@@ -23,6 +23,13 @@ ion-content
     align-items: center;
     z-index: 0;
 }
+.satisfaction
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 .texte-question p
 {
   color: #ffff;
@@ -109,4 +116,43 @@ ion-content
 .desible-popup
 {
   visibility: hidden;
+}
+
+
+@media only screen and (min-width: 768px){
+
+  .satisfaction
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+}
+
+.satisfaction button
+{
+  width: 250px;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  margin: 5%;
+  padding: 1%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.satisfaction button img
+{
+  width: 70px;
+  height: 70px;
+}
+
+.visible-popup
+{
+  border-radius: 5px;
+  margin-top: -288px;
+  margin-left: 45px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+
 }

@@ -8,21 +8,23 @@
         <div class="texte-question">
           <p>A quel point êtes-vous satisfait de nos services?</p>
         </div>
-        <button class="niveau" (click)="noter(1)">
-            <img src="../../assets/icon/satisfait.png" alt="good">
-            <p>satisfait</p>
-            <ion-icon [color]="color1" class="valide" name="chevron-down-circle"></ion-icon>
-        </button>
-        <button class="niveau" (click)="noter(2)">
-            <img src="../../assets/icon/neutre.png" alt="good">
-            <p class="neutre">neutre</p>
-            <ion-icon [color]="color2" class="valide" name="chevron-down-circle"></ion-icon>
-        </button>
-        <button class="niveau" (click)="noter(3)">
-            <img src="../../assets/icon/peutsatisfait.png" alt="good">
-            <p>pas satisfait</p>
-            <ion-icon [color]="color3" class="valide" name="chevron-down-circle"></ion-icon>
-        </button>
+       <div class="satisfaction">
+          <button class="niveau" (click)="noter(1)">
+              <img src="../../assets/icon/satisfait.png" alt="good">
+              <p>satisfait</p>
+              <ion-icon [color]="color1" class="valide" name="chevron-down-circle"></ion-icon>
+          </button>
+          <button class="niveau" (click)="noter(2)">
+              <img src="../../assets/icon/neutre.png" alt="good">
+              <p class="neutre">neutre</p>
+              <ion-icon [color]="color2" class="valide" name="chevron-down-circle"></ion-icon>
+          </button>
+          <button class="niveau" (click)="noter(3)">
+              <img src="../../assets/icon/peutsatisfait.png" alt="good">
+              <p>pas satisfait</p>
+              <ion-icon [color]="color3" class="valide" name="chevron-down-circle"></ion-icon>
+          </button>
+       </div>
     </div>
   </div>
     <button [ngClass]="active" (click)=" popupDesible()">

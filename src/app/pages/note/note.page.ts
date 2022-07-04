@@ -21,8 +21,6 @@ export class NotePage implements OnInit {
 
 
   constructor(
-              private navCtrl: NavController,
-              private toastContreoller: ToastController,
               private storageService: StorageService,
               private dataservice: DataService,
               // private loadingCtrl: LoadingController,
