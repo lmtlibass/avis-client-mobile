@@ -9,9 +9,14 @@ ion-content
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 70px;
-  border-radius: 0px 0px 371px 376px / 0px 0px 125px 125px;
-  color: #ffff;
+  padding: 150px;
+  border-radius: 0 0 100% 100%;
+  color: white;
+}
+.top h1
+{
+  font-weight: 500;
+  font-size: 46px !important;
 }
 form
 {
@@ -22,25 +27,30 @@ label{
   color: #ffff;
 }
 .select{
-  padding: 8px;
+  padding: 21px;
   border-radius: 7px;
-  border: 1px solid #ffff;
+  border: 1px solid white;
   background-color: #c1e0be;
   opacity: 0.7;
-  width: 200px;
-  margin: 30px 0px 30px 0px;
+  width: 90%;
+  margin: 7% auto;
 }
 ::placeholder {
   color: #ffff;
 }
 .connexion .btn-choix
 {
-  width: 90px;
+  width: 120px;
   color: #fff;
   background-color: #373737;
   border-radius: 5px;
-  margin-left: 15px;
-  padding: 10px;
+  margin-left: 20%;
+  padding: 15px;
+}
+.connexion .btn-choix p {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
 }
 .liste{
  background-color: rgba(139, 20, 20, 0);
@@ -54,18 +64,22 @@ label{
     border: 1px solid #ffff;
     background-color: #c1e0be;
     opacity: 0.7;
-    width: 300px;
-    height: 70px;
-    margin: 5% auto;
+    width: 613px;
+    height: 94px;
+    margin: 10% auto;
   }
 
-  .connexion .btn-choix
+.connexion .btn-choix
 {
-  width: 100px;
+  width: 20%;
   color: #fff;
   background-color: #373737;
   border-radius: 5px;
-  margin-left: 420px;
-  padding: 10px;
+  margin-left: 20%;
+  padding: 19px;
+}
+.connexion .btn-choix p 
+{
+  font-size: 20px;
 }
 }

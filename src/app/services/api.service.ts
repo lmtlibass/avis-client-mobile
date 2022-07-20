@@ -22,10 +22,7 @@ export class ApiService {
 
 
 
-  //recuperer les données secrétes
-  getSecretData() {
-    return this.http.get(`${this.url}/register/secret`);
-  }
+
 
   //inscription/register
   register(credentials: {email: any; password: any}): Observable<any> {

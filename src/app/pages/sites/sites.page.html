@@ -1,24 +1,25 @@
 <ion-content class="load-state">
   <div class="container">
     <div class="top">
-      <img src="../../assets/img/logo_afridev.png" alt="">
       <h1>Sites</h1>
     </div>
     <div class="botom">
       <ion-list class="liste">
         <ion-item>
-          <ion-select placeholder="Select Sous Site" (ionChange)="handleChange($event)" class="select">
+          <ion-select placeholder="Select Sous Site" (ionChange)="handleChange($event)" class="select" line="none">
             <ion-select-option *ngFor="let soussites of sousiteBySite" [value]="soussites">
                 {{ soussites.sous_domaine}}
             </ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>      
-        <div class="connexion">
-          <button class="btn-choix" [routerLink]="['/note']" >
+      <div class="connexion">
+        <button class="btn-choix" [routerLink]="['/note']" >
+          <p>
             Choisir
-          </button>
-        </div>
+          </p>
+        </button>
+      </div>
     </div>
   </div>
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -6,6 +6,9 @@ import { ApiService } from '../../services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { DataService } from 'src/app/services/data.service';
 import { map } from 'rxjs/operators';
+import { Network } from '@capacitor/network';
+import { PluginListenerHandle } from '@capacitor/core';
+
 
 
 @Component({
@@ -13,7 +16,9 @@ import { map } from 'rxjs/operators';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, OnDestroy {
+  networkStatus: any;
+  networkListener: PluginListenerHandle;
   userform: FormGroup;
   soussite: any;
   currentSite: any [];
@@ -29,37 +34,45 @@ export class LoginPage implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.userform = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    this.networkListener = await Network.addListener('networkStatusChange', status => {
+      console.log('networkStatusChange', status);
+      this.networkStatus = status;
+    });
+
   }
 
   async login() {
-    const loading = await this.loadingCtrl.create();
-    await loading.present();
-    // console.log(this.userform.value);
-
-    this.apiService.login(this.userform.value).subscribe(
-      async _ => {
-        // console.log('message');
-        await loading.dismiss();
-        console.log(this.apiService.currentAccesToken);
-        this.storageService.set('user.site_id', this.apiService.currentAccesToken.user.site_id);
-        // this.router.navigateByUrl('/sites', { replaceUrl: true });
-        this.getSite();
-  },
-      async (err) => {
-        await loading.dismiss();
-        const alert = await this.alertCtrl.create({
-          header: 'login failed',
-          message: err.error.message,
-          buttons: ['OK'],
-        });
-        await alert.present();
-      }
-    );
+    this.networkStatus = await Network.getStatus();
+    console.log(this.networkStatus);
+    if(this.networkStatus.connected === false){
+      this.presentAlert();
+    }else{
+        const loading = await this.loadingCtrl.create();
+        await loading.present();
+        this.apiService.login(this.userform.value).subscribe(
+          async _ => {
+              await loading.dismiss();
+              console.log(this.apiService.currentAccesToken);
+              this.storageService.set('user.site_id', this.apiService.currentAccesToken.user.site_id);
+              this.getSite();
+          },
+          async (err) => {
+            await loading.dismiss();
+            const alert = await this.alertCtrl.create({
+              header: 'login failed',
+              message: err.error.message,
+              buttons: ['OK'],
+            });
+            await alert.present();
+          }
+      );
+    }
 }
 
   getSite(){
@@ -71,10 +84,9 @@ export class LoginPage implements OnInit {
         console.log(this.soussite);
         for(const site of this.soussite ){
           if(await this.storageService.get('user.site_id') === site.id ){
-            console.log(site.id);
-           this.currentSite = site.sous_sites;
-            // console.log(this.currentSite);
-            this.storageService.set('currentsite', this.currentSite);
+              console.log(site.id);
+              this.currentSite = site.sous_sites;
+              this.storageService.set('currentsite', this.currentSite);
                 if(this.currentSite.length === 0){
                   this.router.navigateByUrl('/note', { replaceUrl: true });
                 }else {
@@ -84,8 +96,22 @@ export class LoginPage implements OnInit {
         }
     });
   }
-  // else{
-  //   this.router.navigateByUrl('/sites', { replaceUrl: true });
-  //   console.log('on est bon');
-  // }
+
+  //allerte if connetion is lost
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      subHeader: 'Oups!',
+      message: 'Vous n\'êtes pas connecté à internet',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  ngOnDestroy() {
+    this.networkListener.remove();
+  }
+
+
 }

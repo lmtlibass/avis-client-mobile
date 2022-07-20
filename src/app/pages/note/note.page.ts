@@ -120,8 +120,11 @@ export class NotePage implements OnInit {
   //   });
   // }
   popupSuccess(){
-    if(true){
+    if(true && this.addnote()){
       this.active = 'visible-popup';
+    }else
+    {
+      console.log('oups!');
     }
   }
   popupDesible(){
